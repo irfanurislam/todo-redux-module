@@ -1,10 +1,10 @@
-import { useAppDispatch } from "@/redux/features/hook";
+import { useAppSelector } from "@/redux/features/hook";
 import AddTodoModal from "./AddTodoModal";
 import TodoCard from "./TodoCard";
 import TodoFilter from "./TodoFilter";
 
 const TodoContainer = () => {
-  const { todos } = useAppDispatch((state) => state.todos);
+  const { todos } = useAppSelector((state) => state.todos);
   return (
     <div>
       <div className="flex justify-between mb-5">
@@ -17,7 +17,7 @@ const TodoContainer = () => {
         <TodoCard></TodoCard>
         <TodoCard></TodoCard> */}
         {todos?.map((item) => (
-          <TodoCard {...item}></TodoCard>
+          <TodoCard id={""} {...item}></TodoCard>
         ))}
 
         {/* <div className="bg-white p-3 font-bold text-2xl  flex justify-center items-center rounded-lg">
