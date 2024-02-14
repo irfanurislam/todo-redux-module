@@ -1,12 +1,13 @@
-import { Button } from "@/components/ui/button";
+
 
 import "./App.css";
+import Todo from "./pages/Todo";
 
 function App() {
   return (
     <>
       <div>
-        <Button>Click me</Button>
+        <Todo></Todo>
       </div>
     </>
   );
