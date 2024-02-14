@@ -1,14 +1,28 @@
+import { useAppDispatch } from "@/redux/features/hook";
 import { Button } from "../ui/button";
+import { removeTodo } from "@/redux/features/todoSlice";
+import { FormEvent } from "react";
 
-const TodoCard = () => {
+type TTodoCardProps = {
+  id: string;
+  title: string;
+  description: string;
+  isCompleted: boolean;
+};
+const TodoCard = ({ title, description, id, isCompleted }: TTodoCardProps) => {
+  const handleComplete = (e: FormEvent) => {
+    e.preventDefault();
+  };
+
+  const dispatch = useAppDispatch();
   return (
     <div className="bg-white rounded-md flex justify-between items-center p-3 border">
-      <input type="checkbox" />
-      <p className="font-semibold">todo title</p>
-      <p>time</p>
-      <p>dexcription</p>
+      <input type="checkbox" name="complete" id="complete" />
+      <p className="font-semibold">{title}</p>
+      <div>{isCompleted ? "done" : "pending"}</div>
+      <p>{description}</p>
       <div className="space-x-5">
-        <Button className="bg-red-500">
+        <Button onClick={() => dispatch(removeTodo(id))} className="bg-red-500">
           {" "}
           <svg
             xmlns="http://www.w3.org/2000/svg"
